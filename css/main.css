@@ -1,3 +1,38 @@
-body {
-	
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+}
+#calc {
+	margin: 0 auto;
+	width: 325px;
+	display: flex;
+	flex-flow: row wrap;
+}
+#calc > * {
+	font-size: 2em;
+	text-align: center;
+	padding: 20px 0;
+}
+button {
+	border: 1px solid;
+}
+.dark {
+	border-color: #91CA86;
+	background: #61B34F;
+	color: white;
+}
+.light {
+	border-color: #B5DCB0;
+	background: #82C276;
+	color: #537A4B;
+}
+#screen {
+	flex: 1 75%;
+	border: 1px solid #91CA86;
+	overflow: hidden;
+}
+.sm {
+	flex: 0 25%;
 }
