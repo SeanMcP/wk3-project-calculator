@@ -18,7 +18,7 @@
 button {
 	border: 1px solid;
 }
-.dark {
+.mid {
 	border-color: #91CA86;
 	background: #61B34F;
 	color: white;
@@ -27,6 +27,11 @@ button {
 	border-color: #B5DCB0;
 	background: #82C276;
 	color: #537A4B;
+}
+.dark {
+	background: #559b45;
+	border-color: #91CA86;
+	color: #91CA86;
 }
 #screen {
 	flex: 1 75%;

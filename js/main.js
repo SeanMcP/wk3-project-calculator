@@ -18,15 +18,31 @@ let divide = document.getElementById("divideBtn");
 let equals = document.getElementById("equalsBtn");
 let clear = document.getElementById("clearBtn");
 
+let parenth = document.getElementById("parenthesesBtn");
+let modulo = document.getElementById("moduloBtn");
+let root = document.getElementById("rootBtn");
+let caret = document.getElementById("caretBtn");
+
+let decimalFlag = false;
+let parenthFlag = false;
+let rootFlag = false;
+
 let memory = [];
 
 function clearScreen() {
   screen.textContent = "";
   memory = [];
-  console.log("I cleared the screen");
+  decimalFlag = false;
+  parenthFlag = false;
+  rootFlag = false;
 }
 function toScreen(num) {
   screen.textContent += num;
+}
+function condToScreen(val) {
+  if (screen.textContent) {
+    toScreen(val);
+  }
 }
 
 one.addEventListener('click', function() {
@@ -57,37 +73,65 @@ nine.addEventListener('click', function() {
   toScreen(9);
 });
 zero.addEventListener('click', function() {
-  if (screen.textContent){
-    toScreen(0);
-  }
+  condToScreen(0);
 });
 decimal.addEventListener('click', function() {
-  // let decimalTest = screen.textContent;
-  // if (decimalTest.indexOf(".")) {
-  //   return
-  // } else
-  if (screen.textContent) {
+  if (decimalFlag) {
+    return;
+  } else if (screen.textContent) {
     toScreen(".");
+    decimalFlag = true;
   } else {
     toScreen("0.");
+    decimalFlag = true;
+  }
+})
+parenth.addEventListener('click', function() {
+  if (parenthFlag) {
+    toScreen(")");
+    parenthFlag = false;
+} else {
+    toScreen("(");
+    parenthFlag = true;
   }
 })
 
 add.addEventListener('click', function() {
-  screen.textContent += "+";
+  condToScreen("+");
+  decimalFlag = false;
 });
 subtract.addEventListener('click', function() {
-  screen.textContent += "-";
+  toScreen("-");
+  decimalFlag = false;
 });
 multiply.addEventListener('click', function() {
-  screen.textContent += "*";
+  condToScreen("*");
+  decimalFlag = false;
 });
 divide.addEventListener('click', function() {
-  screen.textContent += "/";
+  condToScreen("/");
+  decimalFlag = false;
+});
+caret.addEventListener('click', function() {
+  condToScreen("^");
+  decimalFlag = false;
+});
+modulo.addEventListener('click', function() {
+  condToScreen("%");
+  decimalFlag = false;
+});
+root.addEventListener('click', function() {
+  if (!rootFlag) {
+    toScreen("sqrt(");
+    decimalFlag = false;
+    parenthFlag = true;
+    rootFlag = true;
+  }
 });
 
 equals.addEventListener('click', function() {
   screen.textContent = eval(screen.textContent);
+  decimalFlag = false;
 });
 clear.addEventListener('click', function() {
   clearScreen();
