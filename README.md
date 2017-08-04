@@ -1,1 +1,4 @@
-# README
+# Calculator
+
+- HTML & CSS
+- Javascript
