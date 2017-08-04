@@ -1,4 +1,5 @@
 let screen = document.getElementById("screen");
+let message = document.getElementById("screenMessage");
 let one = document.getElementById("oneBtn");
 let two = document.getElementById("twoBtn");
 let three = document.getElementById("threeBtn");
@@ -26,11 +27,28 @@ let caret = document.getElementById("caretBtn");
 let decimalFlag = false;
 let parenthFlag = false;
 let rootFlag = false;
+let powerFlag = false;
+
+let powerTemp;
 
 let memory = [];
 
+function sayHello(event){
+  if (event.which == 32) {
+    console.log("Hello, world!");
+  }
+}
+function activeKeyboard(event){
+  if (event.which == 49) { //1
+    toScreen(1);
+  } else if (event.which == 50) { //2
+    toScreen(2);
+  }
+}
+
 function clearScreen() {
   screen.textContent = "";
+  message.textContent = "";
   memory = [];
   decimalFlag = false;
   parenthFlag = false;
@@ -45,9 +63,17 @@ function condToScreen(val) {
   }
 }
 
-one.addEventListener('click', function() {
-  toScreen(1);
-});
+// one.addEventListener('click', function() {
+//   toScreen(1);
+// });
+
+body.addEventListener('click', function(event) {
+  if (event.target.id === "clearBtn") {
+    console.log("Hello");
+  }
+})
+
+one.addEventListener('click', toScreen(1));
 two.addEventListener('click', function() {
   toScreen(2);
 });
@@ -113,8 +139,13 @@ divide.addEventListener('click', function() {
   decimalFlag = false;
 });
 caret.addEventListener('click', function() {
-  condToScreen("^");
-  decimalFlag = false;
+  if (!powerFlag) {
+    powerTemp = screen.textContent;
+    message.textContent += powerTemp + "^";
+    screen.textContent = "";
+    powerFlag = true;
+    decimalFlag = false;
+  }
 });
 modulo.addEventListener('click', function() {
   condToScreen("%");
@@ -122,16 +153,26 @@ modulo.addEventListener('click', function() {
 });
 root.addEventListener('click', function() {
   if (!rootFlag) {
-    toScreen("sqrt(");
+    message.textContent += ("\u221A");
     decimalFlag = false;
-    parenthFlag = true;
     rootFlag = true;
   }
 });
 
 equals.addEventListener('click', function() {
-  screen.textContent = eval(screen.textContent);
-  decimalFlag = false;
+  if (rootFlag) {
+    screen.textContent = Math.sqrt(eval(screen.textContent));
+    decimalFlag = false;
+    rootFlag = false;
+    message.textContent = "";
+  } else if (powerFlag) {
+    screen.textContent = Math.pow(eval(powerTemp), eval(screen.textContent));
+    powerFlag = false;
+    message.textContent = "";
+  } else {
+    screen.textContent = eval(screen.textContent);
+    decimalFlag = false;
+  }
 });
 clear.addEventListener('click', function() {
   clearScreen();

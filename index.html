@@ -5,30 +5,32 @@
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 		<link rel="stylesheet" href="./css/main.css" type="text/css"/>
 	</head>
-	<body>
+	<body onkeypress="sayHello(event)">
 		<div id="calc">
 			<button type="button" id="clearBtn" class="mid sm" name="clearBtn">C</button>
+
+			<div id="screenMessage"></div>
 			<div id="screen" class="mid"></div>
 			<button type="button" id="parenthesesBtn" class="dark sm" name="parenthesesBtn">( )</button>
-			<button type="button" id="moduloBtn" class="dark sm" name="moduloBtn">%</button>
+			<button type="button" id="moduloBtn" class="dark sm" name="moduloBtn" value="%">%</button>
 			<button type="button" id="rootBtn" class="dark sm" name="rootBtn">&radic;</button>
 			<button type="button" id="caretBtn" class="dark sm" name="caretBtn">^</button>
-			<button type="button" id="sevenBtn" class="mid sm" name="sevenBtn">7</button>
-			<button type="button" id="eightBtn" class="mid sm" name="eightBtn">8</button>
-			<button type="button" id="nineBtn" class="mid sm" name="nineBtn">9</button>
-			<button type="button" id="divideBtn" class="light sm" name="divideBtn">&#247;</button>
-			<button type="button" id="fourBtn" class="mid sm" name="fourBtn">4</button>
-			<button type="button" id="fiveBtn" class="mid sm" name="fiveBtn">5</button>
-			<button type="button" id="sixBtn" class="mid sm" name="sixBtn">6</button>
-			<button type="button" id="multiplyBtn" class="light sm" name="multiplyBtn">&times;</button>
-			<button type="button" id="oneBtn" class="mid sm" name="oneBtn">1</button>
-			<button type="button" id="twoBtn" class="mid sm" name="twoBtn">2</button>
-			<button type="button" id="threeBtn" class="mid sm" name="threeBtn">3</button>
-			<button type="button" id="subtractBtn" class="light sm" name="subtractBtn">-</button>
-			<button type="button" id="zeroBtn" class="mid sm" name="zeroBtn">0</button>
-			<button type="button" id="decimalBtn" class="mid sm" name="decimalBtn">.</button>
+			<button type="button" id="sevenBtn" class="mid sm" name="sevenBtn" value="7">7</button>
+			<button type="button" id="eightBtn" class="mid sm" name="eightBtn" value="8">8</button>
+			<button type="button" id="nineBtn" class="mid sm" name="nineBtn" value="9">9</button>
+			<button type="button" id="divideBtn" class="light sm" name="divideBtn" value="/">&#247;</button>
+			<button type="button" id="fourBtn" class="mid sm" name="fourBtn" value="4">4</button>
+			<button type="button" id="fiveBtn" class="mid sm" name="fiveBtn" value="5">5</button>
+			<button type="button" id="sixBtn" class="mid sm" name="sixBtn" value="6">6</button>
+			<button type="button" id="multiplyBtn" class="light sm" name="multiplyBtn" value="*">&times;</button>
+			<button type="button" id="oneBtn" class="mid sm" name="oneBtn" value="1">1</button>
+			<button type="button" id="twoBtn" class="mid sm" name="twoBtn" value="2">2</button>
+			<button type="button" id="threeBtn" class="mid sm" name="threeBtn" value="3">3</button>
+			<button type="button" id="subtractBtn" class="light sm" name="subtractBtn" value="-">-</button>
+			<button type="button" id="zeroBtn" class="mid sm" name="zeroBtn" value="0">0</button>
+			<button type="button" id="decimalBtn" class="mid sm" name="decimalBtn"  value=".">.</button>
 			<button type="button" id="equalsBtn" class="mid sm" name="equalsBtn">=</button>
-			<button type="button" id="addBtn" class="light sm" name="addBtn">+</button>
+			<button type="button" id="addBtn" class="light sm" name="addBtn" value="+">+</button>
 		</div>
 		<script src="./js/main.js"></script>
 	</body>
