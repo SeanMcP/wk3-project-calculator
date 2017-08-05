@@ -80,7 +80,13 @@ document.body.addEventListener('click', function(event) {
       decimalFlag = false;
     }
   } else if (event.target.id === "equalsBtn") {
-    if (rootFlag) {
+    if (rootFlag && powerFlag) {
+      screen.textContent = Math.sqrt(eval(Math.pow(eval(powerTemp), eval(screen.textContent))));
+      powerFlag = false;
+      decimalFlag = false;
+      rootFlag = false;
+      message.textContent = "";
+    } else if (rootFlag) {
       screen.textContent = Math.sqrt(eval(screen.textContent));
       decimalFlag = false;
       rootFlag = false;
